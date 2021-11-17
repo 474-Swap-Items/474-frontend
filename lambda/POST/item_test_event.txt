@@ -1,0 +1,8 @@
+{
+  "id": 1,
+  "title": "Teddy Bear",
+  "description": "A used teddy bear",
+  "image-url": "https://nationaltoday.com/wp-content/uploads/2021/08/Teddy-Bear-Day.jpg",
+  "price": 50,
+  "email": "bp@sfu.ca"
+}
