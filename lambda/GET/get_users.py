@@ -4,7 +4,7 @@ import boto3
 def lambda_handler(event, context):
     # TODO implement
     db=boto3.resource('dynamodb')
-    request_table = db.Table('Users')
+    request_table = db.Table('User')
     
 
     if event['http_method'] == 'GET':

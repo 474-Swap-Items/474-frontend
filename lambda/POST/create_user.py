@@ -8,28 +8,22 @@ import boto3
 # create a DynamoDB object using the AWS SDK
 dynamodb = boto3.resource('dynamodb')
 # use the DynamoDB object to select our table
-table = dynamodb.Table('Posting')
+table = dynamodb.Table('User')
 # store the current time in a human readable format in a variable
-#now = strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())
 
 # define the handler function that the Lambda service will use as an entry point
 def lambda_handler(event, context):
 # extract values from the event object we got from the Lambda service and store in a variable
-    #name = event['firstName'] +' '+ event['lastName']
 # write name and time to the DynamoDB table using the object we instantiated and save response in a variable
     response = table.put_item(
         Item={
-            "id": event['id'],
-            "title": event['title'],
-            "price": event['price'],
-            "owner": event['owner'],
-            "type": event['type'],
-            # "image-url": event['image-url'],
-            # "description": event['description'],
-            # "email": event['email']
-            })
+            "id": event["id"],
+            "username": event["username"],
+            "name": event["name"]
+        }
+    )
 # return a properly formatted JSON object
     return {
         'statusCode': 200,
-        'body': json.dumps(event['title'] + " " + str(event['price']) + " " + str(event['id']))
+        'body': json.dumps('Hello from Lambda, ' + str(event["id"]) + " " + event["username"] + " " + event["name"])
     }
