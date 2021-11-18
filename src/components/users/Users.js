@@ -14,20 +14,33 @@ export default function Users() {
     },[]);
     
     const getUsers = () => {
-        // axios.get('https://uuu63lx2w7.execute-api.us-east-1.amazonaws.com/test/getitem') 
-        // .then(res => {
-        //     setPostList(res.data);
-        //     console.log(postList);
-        // })
-        // .catch((error) => {
-        //   console.error(error)
-        // });
+        axios.get('https://y1nkeqjzma.execute-api.us-east-1.amazonaws.com/prod') 
+        .then(res => {
+            setUserList(res.data);
+            console.log(userList);
+        })
+        .catch((error) => {
+          console.error(error)
+        });
     }
       
     return (
         <div>
             <h1>Users Page!</h1>
             <CreateUser/>
+            <div>
+                <h2>Users</h2>
+                <List>
+                {userList.map((item) => {
+                    return<ListItem>
+                    <ListItemText
+                        primary={item.username}
+                        secondary={item.name}
+                    />
+                    </ListItem>
+                })}
+                </List>
+            </div>
         </div>
     );
 }
