@@ -8,7 +8,7 @@ import boto3
 # create a DynamoDB object using the AWS SDK
 dynamodb = boto3.resource('dynamodb')
 # use the DynamoDB object to select our table
-table = dynamodb.Table('users')
+table = dynamodb.Table('User')
 # store the current time in a human readable format in a variable
 
 # define the handler function that the Lambda service will use as an entry point

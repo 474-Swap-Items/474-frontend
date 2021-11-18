@@ -8,7 +8,7 @@ import boto3
 # create a DynamoDB object using the AWS SDK
 dynamodb = boto3.resource('dynamodb')
 # use the DynamoDB object to select our table
-table = dynamodb.Table('swap-items')
+table = dynamodb.Table('Postings')
 # store the current time in a human readable format in a variable
 #now = strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())
 
@@ -21,13 +21,15 @@ def lambda_handler(event, context):
         Item={
             "id": event['id'],
             "title": event['title'],
-            "description": event['description'],
-            "image-url": event['image-url'],
             "price": event['price'],
-            "email": event['email']
+            "owner": event['owner'],
+            "type": event['type'],
+            # "image-url": event['image-url'],
+            # "description": event['description'],
+            # "email": event['email']
             })
 # return a properly formatted JSON object
     return {
         'statusCode': 200,
-        'body': json.dumps(event['title'] + " " + event['description'] + " " + event['image-url'] + " " + str(event['price']) + " " + event['email'] + " " + str(event['id']))
+        'body': json.dumps(event['title'] + " " + str(event['price']) + " " + str(event['id']))
     }

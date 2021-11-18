@@ -9,4 +9,4 @@ def lambda_handler(event, context):
 
     if event['http_method'] == 'GET':
         all_items = request_table.scan()
-        return (all_items['Users'])
+        return (all_items['Items'])
