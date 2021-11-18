@@ -17,7 +17,7 @@ export default function Posts() {
     },[]);
     
     const getPosts = () => {
-        axios.get('https://uuu63lx2w7.execute-api.us-east-1.amazonaws.com/test/getitem') 
+        axios.get('https://4g9ijghb9j.execute-api.us-east-1.amazonaws.com/prod') 
         .then(res => {
             console.log(res.data)
             setPostList(res.data);
