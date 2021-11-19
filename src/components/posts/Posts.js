@@ -2,9 +2,9 @@ import * as React from 'react'
 import CreatePost from './CreatePost'
 import { useState, useEffect } from 'react'
 import axios from 'axios';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
 
 export default function Posts() {
@@ -32,17 +32,32 @@ export default function Posts() {
             <CreatePost data = {lastID}/>
             <div>
                 <h2>Posts</h2>
-                <List>
                 {postList.map((item) => {
-                    return<ListItem>
-                    <ListItemText className="list-item"
-                        primary={item.title}
-                        secondary={item.type}
-                    />
-                    </ListItem>
+                    return(
+                    <Card>
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                {item.title}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                <div>
+                                    <h2>
+                                        {item.type}
+                                    </h2>
+                                    <h3>
+                                        ${item.price}
+                                    </h3>
+                                    <h4>
+                                        Posted by: {item.owner}@sfu.ca
+                                    </h4>
+                                </div>
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                    )
                 })}
-                </List>
             </div>
         </div>
     );
+
 }
