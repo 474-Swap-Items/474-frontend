@@ -14,9 +14,20 @@ export default function CreateUser() {
     setOpen(false);
   };
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <div>
-      <Dialog open={true}>
+      <Button variant="outlined" onClick={handleClickOpen}>
+        Create Post
+      </Button>
+      <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Create User</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -42,6 +53,7 @@ export default function CreateUser() {
           />
         </DialogContent>
         <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={handleSubmit}>Submit</Button>
         </DialogActions>
       </Dialog>
