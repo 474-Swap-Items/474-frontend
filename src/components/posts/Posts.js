@@ -8,27 +8,37 @@ import Typography from '@mui/material/Typography';
 
 
 export default function Posts() {
+    
     const [postList, setPostList] = useState([]);
     const [lastID, setLastID] = useState();
+    const [callback, setCallback] = useState(1);
     useEffect(()=>{
         getPosts();
         setLastID(postList.length);
         console.log(lastID)
-    },[]);
+    },[callback]);
     
     const getPosts = () => {
         axios.get('https://v1sdueurx1.execute-api.us-east-1.amazonaws.com/initial/') 
         .then(res => {
             setPostList(res.data);
+            console.log(res.data);
         })
         .catch((error) => {
           console.log(error)
         });
     }
+
+    const rerenderParentCallback = () => {
+        getPosts();
+        setCallback(callback+1);
+        console.log("callback");
+    }
+
     return (
         <div>
             <h1>Posts Page!</h1>
-            <CreatePost data = {lastID}/>
+            <CreatePost rerenderParentCallback={rerenderParentCallback} data = {lastID}/>
             <div>
                 <h2>Posts</h2>
                 {postList.map((item) => {

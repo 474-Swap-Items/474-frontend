@@ -8,26 +8,34 @@ import CardContent from '@mui/material/CardContent';
 export default function Users() {
     const [userList, setUserList] = useState([]);
     const [lastID, setLastID] = useState();
+    const [callback, setCallback] = useState(1);
 
     useEffect(()=>{
         getUsers();
         setLastID(userList.length)
-    },[]);
+    },[callback]);
     
     const getUsers = () => {
-        axios.get('https://sbzagtupu4.execute-api.us-east-1.amazonaws.com/initial/') 
+        axios.get('https://y1nkeqjzma.execute-api.us-east-1.amazonaws.com/prod') 
         .then(res => {
             setUserList(res.data);
+            console.log(res.data);
         })
         .catch((error) => {
           console.error(error)
         });
     }
       
+    const rerenderParentCallback = () => {
+        getUsers();
+        setCallback(callback+1);
+        console.log("callback");
+    }
+
     return (
         <div>
             <h1>Users Page!</h1>
-            <CreateUser data={lastID}/>
+            <CreateUser rerenderParentCallback={rerenderParentCallback} data={lastID}/>
             <div>
                 <h2>Users</h2>
                 {userList.map((item) => {

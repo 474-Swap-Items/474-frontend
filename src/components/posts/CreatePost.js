@@ -7,8 +7,12 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+
 
 export default function CreatePost(props) {
+
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => {
     setOpen(true);
@@ -17,6 +21,7 @@ export default function CreatePost(props) {
   const handleClose = () => {
     setOpen(false);
   };
+
   const handleSubmit = () => {
     let valuesStatus = true;
     const fields = [];
@@ -36,6 +41,7 @@ export default function CreatePost(props) {
       if(pattern.test(fields[2])){
         makeAndSend(fields);
         setOpen(false);
+        props.rerenderParentCallback();
       }else{
         alert("Price must be a number")
       }
@@ -43,7 +49,7 @@ export default function CreatePost(props) {
   }
 
   const makeAndSend = (values) =>{
-    let obj = {title: values[0], owner: values[1],price: values[2], type: values[3],id: props.data.toString()}
+    let obj = {title: values[0], owner: values[1],price: values[2], type: values[3],id: uuidv4()}
     axios.post('https://v1sdueurx1.execute-api.us-east-1.amazonaws.com/initial', obj)
     .then((res) => {console.log(res)})
     .catch((err) => {console.log(err)})

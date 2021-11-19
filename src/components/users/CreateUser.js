@@ -7,6 +7,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function CreateUser(props) {
   const [open, setOpen] = React.useState(false);
@@ -26,13 +27,14 @@ export default function CreateUser(props) {
     }else{
         makeAndSend(fields);
         setOpen(false);
+        props.rerenderParentCallback();
     }
     setOpen(false);
   };
 
   const makeAndSend = (values) => {
-    let obj = {name: values[0], username: values[1], id: props.data.toString()}
-    axios.post('https://sbzagtupu4.execute-api.us-east-1.amazonaws.com/initial/', obj)
+    let obj = {name: values[0], username: values[1], id: uuidv4()}
+    axios.post('https://y1nkeqjzma.execute-api.us-east-1.amazonaws.com/prod', obj)
     .then((res) => {console.log(res)})
     .catch((err) =>{console.log(err)})
   }
