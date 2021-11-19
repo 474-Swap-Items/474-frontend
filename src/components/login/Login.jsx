@@ -15,6 +15,7 @@ export default function Login() {
     const handleLogin = () => {
       const userNamebox = document.getElementById("username");
       const passwordBox = document.getElementById("password");
+      navigate ('/posts');
     };
     const handleSignup = () => {
         navigate ('/users');
