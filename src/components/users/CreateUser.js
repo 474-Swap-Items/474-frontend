@@ -68,7 +68,6 @@ export default function CreateUser(props) {
             variant="standard"
           />
           <TextField
-            autoFocus
             margin="dense"
             id="name"
             label="Name"
