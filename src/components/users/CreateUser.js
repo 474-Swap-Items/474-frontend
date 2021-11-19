@@ -50,7 +50,7 @@ export default function CreateUser(props) {
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Create Post
+        Create User
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Create User</DialogTitle>
