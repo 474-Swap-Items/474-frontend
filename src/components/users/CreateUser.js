@@ -34,7 +34,7 @@ export default function CreateUser(props) {
 
   const makeAndSend = (values) => {
     let obj = {name: values[0], username: values[1], id: uuidv4()}
-    axios.post('https://y1nkeqjzma.execute-api.us-east-1.amazonaws.com/prod', obj)
+    axios.post('https://63pqdmx904.execute-api.us-east-1.amazonaws.com/production', obj)
     .then((res) => {console.log(res)})
     .catch((err) =>{console.log(err)})
   }
