@@ -37,7 +37,7 @@ export default function Posts() {
 
     return (
         <div>
-            <h1>Posts Page!</h1>
+            <h1>Posts Page (Yusuf Saleem)!</h1>
             <CreatePost rerenderParentCallback={rerenderParentCallback} data = {lastID}/>
             <div>
                 <h2>Posts</h2>
