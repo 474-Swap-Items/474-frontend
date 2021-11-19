@@ -2,9 +2,8 @@ import * as React from 'react'
 import CreateUser from './CreateUser'
 import { useState, useEffect } from 'react'
 import axios from 'axios';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 
 export default function Users() {
     const [userList, setUserList] = useState([]);
@@ -12,14 +11,13 @@ export default function Users() {
 
     useEffect(()=>{
         getUsers();
+        setLastID(userList.length)
     },[]);
     
     const getUsers = () => {
-        axios.get('https://y1nkeqjzma.execute-api.us-east-1.amazonaws.com/prod') 
+        axios.get('https://sbzagtupu4.execute-api.us-east-1.amazonaws.com/initial/') 
         .then(res => {
             setUserList(res.data);
-            setLastID(userList.length);
-            console.log(userList);
         })
         .catch((error) => {
           console.error(error)
@@ -29,19 +27,19 @@ export default function Users() {
     return (
         <div>
             <h1>Users Page!</h1>
-            <CreateUser/>
+            <CreateUser data={lastID}/>
             <div>
                 <h2>Users</h2>
-                <List>
                 {userList.map((item) => {
-                    return<ListItem>
-                    <ListItemText
-                        primary={item.name}
-                        secondary={item.username}
-                    />
-                    </ListItem>
+                    return<Card>
+                        <CardContent >
+                        <div>
+                            <h2>{item.name}</h2>
+                            <h4>{item.username}</h4>
+                        </div>
+                        </CardContent>
+                    </Card>
                 })}
-                </List>
             </div>
         </div>
     );

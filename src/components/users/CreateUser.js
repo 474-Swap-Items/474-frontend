@@ -6,13 +6,36 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import axios from 'axios';
 
-export default function CreateUser() {
+export default function CreateUser(props) {
   const [open, setOpen] = React.useState(false);
 
   const handleSubmit = () => {
+    let valuesStatus = true;
+    const fields = [];
+    fields.push(document.getElementById("name").value);
+    fields.push(document.getElementById("username").value);
+    fields.map((field) =>{
+      if(field === ""){
+        valuesStatus = false;
+      }
+    })
+    if(valuesStatus == false){
+        alert("you need to fill in all of the fields");
+    }else{
+        makeAndSend(fields);
+        setOpen(false);
+    }
     setOpen(false);
   };
+
+  const makeAndSend = (values) => {
+    let obj = {name: values[0], username: values[1], id: props.data.toString()}
+    axios.post('https://sbzagtupu4.execute-api.us-east-1.amazonaws.com/initial/', obj)
+    .then((res) => {console.log(res)})
+    .catch((err) =>{console.log(err)})
+  }
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -21,6 +44,8 @@ export default function CreateUser() {
   const handleClose = () => {
     setOpen(false);
   };
+
+
 
   return (
     <div>
@@ -45,8 +70,8 @@ export default function CreateUser() {
           <TextField
             autoFocus
             margin="dense"
-            id="email"
-            label="Email"
+            id="name"
+            label="Name"
             type="email"
             fullWidth
             variant="standard"

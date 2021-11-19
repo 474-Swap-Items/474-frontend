@@ -10,7 +10,6 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 export default function CreatePost(props) {
   const [open, setOpen] = React.useState(false);
-  console.log(props.data);
   const handleClickOpen = () => {
     setOpen(true);
   };

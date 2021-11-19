@@ -12,18 +12,17 @@ export default function Posts() {
     const [lastID, setLastID] = useState();
     useEffect(()=>{
         getPosts();
+        setLastID(postList.length);
+        console.log(lastID)
     },[]);
     
     const getPosts = () => {
         axios.get('https://v1sdueurx1.execute-api.us-east-1.amazonaws.com/initial/') 
         .then(res => {
             setPostList(res.data);
-            setLastID(postList.length);
-            console.log(res.data);
-
         })
         .catch((error) => {
-          console.error(error)
+          console.log(error)
         });
     }
     return (
