@@ -1,4 +1,5 @@
 import * as React from 'react';
+import axios from 'axios';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -7,9 +8,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-export default function CreatePost() {
+export default function CreatePost(props) {
   const [open, setOpen] = React.useState(false);
-
+  console.log(props.data);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -21,11 +22,10 @@ export default function CreatePost() {
     let valuesStatus = true;
     const fields = [];
     fields.push(document.getElementById("title").value);
-    fields.push(document.getElementById("description").value);
+    fields.push(document.getElementById("owner").value);
     fields.push(document.getElementById("price").value);
-    fields.push(document.getElementById("image_url").value);
-    fields.push(document.getElementById("email").value);
-    fields.map(field =>{
+    fields.push(document.getElementById("type").value);
+    fields.map((field) =>{
       if(field === ""){
         valuesStatus = false;
       }
@@ -44,8 +44,10 @@ export default function CreatePost() {
   }
 
   const makeAndSend = (values) =>{
-    let obj = {title: values[0], description: values[1],price: values[2], image_url: values[3],email: values[4]}
-    //axios send
+    let obj = {title: values[0], owner: values[1],price: values[2], type: values[3],id: props.data.toString()}
+    axios.post('https://v1sdueurx1.execute-api.us-east-1.amazonaws.com/initial', obj)
+    .then((res) => {console.log(res)})
+    .catch((err) => {console.log(err)})
   }
 
   return (
@@ -70,8 +72,8 @@ export default function CreatePost() {
           />
           <TextField
             margin="dense"
-            id="description"
-            label="Description"
+            id="owner"
+            label="Owner"
             type="description"
             fullWidth
             variant="standard"
@@ -86,17 +88,9 @@ export default function CreatePost() {
           />
           <TextField
             margin="dense"
-            id="image_url"
-            label="Image Link"
+            id="type"
+            label="Type"
             type="image_url"
-            fullWidth
-            variant="standard"
-          />
-          <TextField
-            margin="dense"
-            id="email"
-            label="Email"
-            type="email"
             fullWidth
             variant="standard"
           />

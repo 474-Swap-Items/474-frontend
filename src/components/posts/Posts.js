@@ -5,32 +5,31 @@ import axios from 'axios';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import {Link} from 'react-router-dom';
 
 
 export default function Posts() {
     const [postList, setPostList] = useState([]);
-
+    const [lastID, setLastID] = useState();
     useEffect(()=>{
         getPosts();
-        console.log(postList);
     },[]);
     
     const getPosts = () => {
-        axios.get('https://4g9ijghb9j.execute-api.us-east-1.amazonaws.com/prod') 
+        axios.get('https://v1sdueurx1.execute-api.us-east-1.amazonaws.com/initial/') 
         .then(res => {
-            console.log(res.data)
             setPostList(res.data);
+            setLastID(postList.length);
+            console.log(res.data);
+
         })
         .catch((error) => {
           console.error(error)
         });
     }
-      
     return (
         <div>
             <h1>Posts Page!</h1>
-            <CreatePost/>
+            <CreatePost data = {lastID}/>
             <div>
                 <h2>Posts</h2>
                 <List>

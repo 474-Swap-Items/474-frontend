@@ -8,6 +8,7 @@ import ListItemText from '@mui/material/ListItemText';
 
 export default function Users() {
     const [userList, setUserList] = useState([]);
+    const [lastID, setLastID] = useState();
 
     useEffect(()=>{
         getUsers();
@@ -17,6 +18,7 @@ export default function Users() {
         axios.get('https://y1nkeqjzma.execute-api.us-east-1.amazonaws.com/prod') 
         .then(res => {
             setUserList(res.data);
+            setLastID(userList.length);
             console.log(userList);
         })
         .catch((error) => {
@@ -34,8 +36,8 @@ export default function Users() {
                 {userList.map((item) => {
                     return<ListItem>
                     <ListItemText
-                        primary={item.username}
-                        secondary={item.name}
+                        primary={item.name}
+                        secondary={item.username}
                     />
                     </ListItem>
                 })}
