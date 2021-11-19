@@ -35,7 +35,7 @@ export default function Posts() {
                 <List>
                 {postList.map((item) => {
                     return<ListItem>
-                    <ListItemText
+                    <ListItemText className="list-item"
                         primary={item.title}
                         secondary={item.type}
                     />

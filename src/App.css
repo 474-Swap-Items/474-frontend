@@ -8,6 +8,15 @@
   background-color: #abc2ee;
 }
 
+.list-item{
+  background-color: #b1b1b1;
+  justify-content: center;
+  text-align: center;
+  height: 6rem;
+  border-radius: 0.5rem;
+
+}
+
 .buttons{
   display: flex;
   justify-content: space-between;
