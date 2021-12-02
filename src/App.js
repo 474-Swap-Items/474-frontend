@@ -8,12 +8,14 @@ import Posts from './components/posts/Posts'
 import Login from './components/login/Login';
 import NotFound from './components/nav/NotFound';
 
+
 function App() {
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path='/' element={<Login/>} />
+          <Route path='/' element={<Homepage/>} />
+          <Route path='/login' element={<Login/>} />
           <Route path='/users' element={<Users/>} />
           <Route path='/posts' element={<Posts/>} />
           <Route path='/*' element={<NotFound/>} />
