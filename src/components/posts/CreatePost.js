@@ -9,10 +9,11 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-
+import { useAuthContext } from '../../contexts/AuthContext';
+import { useUserContext } from '../../contexts/UserContext';
 
 export default function CreatePost(props) {
-
+  const { user, setUser } = useUserContext();
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => {
     setOpen(true);
@@ -26,7 +27,6 @@ export default function CreatePost(props) {
     let valuesStatus = true;
     const fields = [];
     fields.push(document.getElementById("title").value);
-    fields.push(document.getElementById("owner").value);
     fields.push(document.getElementById("price").value);
     fields.push(document.getElementById("type").value);
     fields.map((field) =>{
@@ -38,7 +38,7 @@ export default function CreatePost(props) {
         alert("you need to fill in all of the fields");
     }else{
       const pattern = /\d/g;
-      if(pattern.test(fields[2])){
+      if(pattern.test(fields[1])){
         makeAndSend(fields);
         setOpen(false);
         props.rerenderParentCallback();
@@ -49,7 +49,7 @@ export default function CreatePost(props) {
   }
 
   const makeAndSend = (values) =>{
-    let obj = {title: values[0], owner: values[1],price: values[2], type: values[3],id: uuidv4()}
+    let obj = {title: values[0],price: values[1], type: values[2],id: uuidv4(), owner:user?.attributes?.email}
     axios.post('https://v1sdueurx1.execute-api.us-east-1.amazonaws.com/initial/', obj)
     .then((res) => {console.log(res)})
     .catch((err) => {console.log(err)})
@@ -72,14 +72,6 @@ export default function CreatePost(props) {
             id="title"
             label="Title"
             type="title"
-            fullWidth
-            variant="standard"
-          />
-          <TextField
-            margin="dense"
-            id="owner"
-            label="Owner"
-            type="description"
             fullWidth
             variant="standard"
           />

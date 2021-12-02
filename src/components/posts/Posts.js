@@ -59,7 +59,7 @@ export default function Posts() {
                                         ${item.price}
                                     </h3>
                                     <h4>
-                                        Posted by: {item.owner}@sfu.ca
+                                        Posted by: {item.owner}
                                     </h4>
                                 </div>
                             </Typography>
