@@ -66,18 +66,18 @@ export default function NavBar() {
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <Box sx={{ m: "0.2rem" }}>
-                            <Button variant="contained" onClick={goToHome}>Home</Button>
+                            <Button size="small" variant="contained" color="info" onClick={goToHome}>Home</Button>
                         </Box>
                         <Box sx={{ m: "0.2rem" }}>
-                            <Button variant="contained" onClick={goToUsers}>Users</Button>
+                            <Button size="small" variant="contained" color="info" onClick={goToUsers}>Users</Button>
                         </Box>
                         <Box sx={{ m: "0.2rem" }}>
-                            <Button variant="contained" onClick={goToPosts}>Posts</Button>
+                            <Button size="small" variant="contained" color="info" onClick={goToPosts}>Posts</Button>
                         </Box>
                         <Box sx={{ m: "0.2rem" }}>
                             { auth || user ? 
-                            <Button variant="contained" color="error" onClick={logout}>Log out</Button> 
-                            : <Button variant="contained" color="success" onClick={goToLogin}>Log in</Button>}
+                            <Button size="small" variant="contained" color="error" onClick={logout}>Log out</Button> 
+                            : <Button size="small" variant="contained" color="success" onClick={goToLogin}>Log in</Button>}
                         </Box>
                     </Box>
                 </Toolbar>

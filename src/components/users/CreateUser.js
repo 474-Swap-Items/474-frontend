@@ -54,6 +54,44 @@ export default function CreateUser(props) {
     setOpen(false);
   };
 
+  // const [open, setOpen] = React.useState(false);
+
+  // const handleSubmit = () => {
+  //   let valuesStatus = true;
+  //   const fields = [];
+  //   fields.push(document.getElementById("name").value);
+  //   fields.push(document.getElementById("username").value);
+  //   fields.map((field) =>{
+  //     if(field === ""){
+  //       valuesStatus = false;
+  //     }
+  //   })
+  //   if(valuesStatus == false){
+  //       alert("you need to fill in all of the fields");
+  //   }else{
+  //       makeAndSend(fields);
+  //       setOpen(false);
+  //       props.rerenderParentCallback();
+  //   }
+  //   setOpen(false);
+  // };
+
+  // const makeAndSend = (values) => {
+  //   let obj = {name: values[0], username: values[1], id: uuidv4()}
+  //   axios.post('https://y1nkeqjzma.execute-api.us-east-1.amazonaws.com/prod', obj)
+  //   .then((res) => {console.log(res)})
+  //   .catch((err) =>{console.log(err)})
+  // }
+
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
+
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
+
+
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
