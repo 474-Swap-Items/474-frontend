@@ -5,6 +5,7 @@ import axios from 'axios';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import NavBar from '../nav/NavBar';
 
 
 export default function Posts() {
@@ -37,6 +38,7 @@ export default function Posts() {
 
     return (
         <div>
+            <NavBar/>
             <h1>Posts Page!</h1>
             <CreatePost rerenderParentCallback={rerenderParentCallback} data = {lastID}/>
             <div>
