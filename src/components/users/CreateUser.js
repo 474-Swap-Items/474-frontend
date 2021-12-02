@@ -6,17 +6,19 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';
+// import axios from 'axios';
+// import { v4 as uuidv4 } from 'uuid';
+import {Auth} from 'aws-amplify'
 
 export default function CreateUser(props) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const handleSubmit = () => {
     let valuesStatus = true;
     const fields = [];
-    fields.push(document.getElementById("name").value);
     fields.push(document.getElementById("username").value);
+    fields.push(document.getElementById("password").value);
+    fields.push(document.getElementById("email").value);
     fields.map((field) =>{
       if(field === ""){
         valuesStatus = false;
@@ -26,17 +28,22 @@ export default function CreateUser(props) {
         alert("you need to fill in all of the fields");
     }else{
         makeAndSend(fields);
-        setOpen(false);
-        props.rerenderParentCallback();
+        // props.rerenderParentCallback();
     }
-    setOpen(false);
   };
 
-  const makeAndSend = (values) => {
-    let obj = {name: values[0], username: values[1], id: uuidv4()}
-    axios.post('https://sbzagtupu4.execute-api.us-east-1.amazonaws.com/initial/', obj)
-    .then((res) => {console.log(res)})
-    .catch((err) =>{console.log(err)})
+  const makeAndSend = async (values) => {
+    try{
+    const daResponse = await Auth.signUp({
+      username: values[0],
+      password: values[1],
+      attributes: {
+        email: values[2]
+      }
+    })  
+    }catch(error){
+      console.log(error);
+    }
   }
 
   const handleClickOpen = () => {
@@ -71,8 +78,16 @@ export default function CreateUser(props) {
           />
           <TextField
             margin="dense"
-            id="name"
-            label="Name"
+            id="password"
+            label="Password"
+            type="email"
+            fullWidth
+            variant="standard"
+          />
+                    <TextField
+            margin="dense"
+            id="email"
+            label="Email"
             type="email"
             fullWidth
             variant="standard"

@@ -8,14 +8,21 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import {Auth} from 'aws-amplify'
+import CreateUser from '../users/CreateUser';
 
 export default function Login() {  
     const navigate = useNavigate();
 
-    const handleLogin = () => {
+    const handleLogin = async () => {
       const userNamebox = document.getElementById("username");
       const passwordBox = document.getElementById("password");
-      navigate ('/posts');
+      try{
+        const user = await Auth.signIn(userNamebox.value, passwordBox.value)  
+        console.log(user);
+        }catch(error){
+          console.log(error);
+        }
     };
     const handleSignup = () => {
         navigate ('/users');
