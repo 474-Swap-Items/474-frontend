@@ -6,6 +6,7 @@ import Homepage from './components/homepage/Homepage'
 import Users from './components/users/Users'
 import Posts from './components/posts/Posts'
 import Login from './components/login/Login';
+import NotFound from './components/nav/NotFound';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
           <Route path='/' element={<Login/>} />
           <Route path='/users' element={<Users/>} />
           <Route path='/posts' element={<Posts/>} />
-          <Route path='*' element={() => "404 NOT FOUND"} />
+          <Route path='/*' element={<NotFound/>} />
         </Routes>
       </Router>
     </div>
