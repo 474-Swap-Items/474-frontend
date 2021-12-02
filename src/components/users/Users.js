@@ -1,5 +1,4 @@
 import * as React from 'react'
-import CreateUser from './CreateUser'
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import Card from '@mui/material/Card';
