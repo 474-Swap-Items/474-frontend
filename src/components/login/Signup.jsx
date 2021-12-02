@@ -13,38 +13,35 @@ import { useAuthContext } from '../../contexts/AuthContext';
 import { useUserContext } from '../../contexts/UserContext';
 import { Box } from '@mui/system';
 
-
-export default function Login() {  
+export default function Signup() {  
     let history = useHistory();
     const { user, setUser } = useUserContext();
     const { setAuth } = useAuthContext();
 
-    const handleLogin = async () => {
+    const handleSignup = async () => {
         const userNamebox = document.getElementById("username");
         const passwordBox = document.getElementById("password");
+        const emailBox = document.getElementById("email");
         try{
-            const user = await Auth.signIn(userNamebox.value, passwordBox.value)  
+            const user = await Auth.signUp(userNamebox.value, passwordBox.value, emailBox.value)  
             console.log(user);
-            setUser(user);
-            setAuth(true);
-            history.push("/");
         }catch(error){
-            alert(error)
-            console.log("Login failed:" + error);
+            alert(error);
+            console.log("Signup failed:" + error);
         }
-    };
+    }
 
-    const goToSignUp = async () => {
-        history.push("/signup");
+    const goToLogin = () => {
+        history.push("/login");
     }
 
     return (
         <div>
             <Dialog open={true} onClose={console.log("")}>
-                <DialogTitle>Log in</DialogTitle>
+                <DialogTitle>Sign up</DialogTitle>
                 <DialogContent>
                 <DialogContentText>
-                    Please enter your username and password.
+                    Please enter your a username, email and password.
                 </DialogContentText>
                 <TextField
                     autoFocus
@@ -52,6 +49,14 @@ export default function Login() {
                     id="username"
                     label="Username"
                     type="username"
+                    fullWidth
+                    variant="standard"
+                />
+                <TextField
+                    margin="dense"
+                    id="email"
+                    label="Email"
+                    type="email"
                     fullWidth
                     variant="standard"
                 />
@@ -67,11 +72,10 @@ export default function Login() {
                 <DialogActions>
                 <div className="buttons">
                     <Box sx={{ m: "0.2rem" }}>
-                        <Button variant="outlined" onClick={goToSignUp}>Sign up</Button>
+                        <Button variant="outlined" onClick={goToLogin} >Log in</Button>
                     </Box>
                     <Box sx={{ m: "0.2rem" }}>
-                        <Button variant="contained" onClick={handleLogin}>Log in</Button>
-                        {/* <Button variant="contained" onClick={handleSignup}>Sign up</Button> */}
+                        <Button variant="contained" onClick={handleSignup}>Sign up</Button>
                     </Box>
                 </div>
                 </DialogActions>

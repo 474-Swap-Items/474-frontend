@@ -5,6 +5,8 @@ import axios from 'axios';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import NavBar from '../nav/NavBar';
+import {Auth} from 'aws-amplify'
+import {AWS} from 'aws-sdk'
 
 export default function Users() {
     const [userList, setUserList] = useState([]);

@@ -11,7 +11,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import {Auth} from 'aws-amplify'
 
 export default function CreateUser(props) {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   const handleSubmit = () => {
     let valuesStatus = true;
@@ -34,13 +34,13 @@ export default function CreateUser(props) {
 
   const makeAndSend = async (values) => {
     try{
-    const daResponse = await Auth.signUp({
-      username: values[0],
-      password: values[1],
-      attributes: {
-        email: values[2]
-      }
-    })  
+      const daResponse = await Auth.signUp({
+        username: values[0],
+        password: values[1],
+        attributes: {
+          email: values[2]
+        }
+      })  
     }catch(error){
       console.log(error);
     }
@@ -53,8 +53,6 @@ export default function CreateUser(props) {
   const handleClose = () => {
     setOpen(false);
   };
-
-
 
   return (
     <div>
