@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import NavBar from '../nav/NavBar';
 
 export default function Users() {
     const [userList, setUserList] = useState([]);
@@ -34,6 +35,7 @@ export default function Users() {
 
     return (
         <div>
+            <NavBar/>
             <h1>Users Page!</h1>
             <CreateUser rerenderParentCallback={rerenderParentCallback} data={lastID}/>
             <div>
