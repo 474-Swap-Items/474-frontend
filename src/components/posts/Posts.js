@@ -43,9 +43,9 @@ export default function Posts() {
             <CreatePost rerenderParentCallback={rerenderParentCallback} data = {lastID}/>
             <div>
                 <h2>Posts</h2>
-                {postList.map((item) => {
+                {postList.map((item,i) => {
                     return(
-                    <Card>
+                    <Card key={i}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
                                 {item.title}

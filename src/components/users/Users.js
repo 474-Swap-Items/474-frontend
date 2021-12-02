@@ -5,8 +5,7 @@ import axios from 'axios';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import NavBar from '../nav/NavBar';
-import {Auth} from 'aws-amplify'
-import {AWS} from 'aws-sdk'
+import Amplify, {Auth} from 'aws-amplify'
 
 export default function Users() {
     const [userList, setUserList] = useState([]);
@@ -16,7 +15,7 @@ export default function Users() {
     useEffect(()=>{
         getUsers();
         setLastID(userList.length)
-    },[callback]);
+    },[]);
     
     const getUsers = () => {
         axios.get('https://sbzagtupu4.execute-api.us-east-1.amazonaws.com/initial/') 
@@ -28,27 +27,20 @@ export default function Users() {
           console.error(error)
         });
     }
-      
-    const rerenderParentCallback = () => {
-        getUsers();
-        setCallback(callback+1);
-        console.log("callback");
-    }
 
     return (
         <div>
             <NavBar/>
             <h1>Users Page!</h1>
-            <CreateUser rerenderParentCallback={rerenderParentCallback} data={lastID}/>
             <div>
                 <h2>Users</h2>
-                {userList.map((item) => {
-                    return<Card>
-                        <CardContent >
-                        <div>
-                            <h2>{item.name}</h2>
-                            <h4>{item.username}</h4>
-                        </div>
+                {userList.map((item, i) => {
+                    return <Card key={i}>
+                        <CardContent>
+                            <div>
+                                <h2>{item.name}</h2>
+                                <h4>{item.username}</h4>
+                            </div>
                         </CardContent>
                     </Card>
                 })}

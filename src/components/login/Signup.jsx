@@ -18,12 +18,32 @@ export default function Signup() {
     const { user, setUser } = useUserContext();
     const { setAuth } = useAuthContext();
 
+
+    // const createUserInDynamo = () => {
+    //     let valuesStatus = true;
+    //     const fields = [];
+    //     fields.push(document.getElementById("username").value);
+    //     fields.push(document.getElementById("password").value);
+    //     fields.push(document.getElementById("email").value);
+    //     fields.map((field) =>{
+    //       if(field === ""){
+    //         valuesStatus = false;
+    //       }
+    //     })
+    //     if(valuesStatus == false){
+    //         alert("you need to fill in all of the fields");
+    //     }else{
+    //         makeAndSend(fields);
+    //     }
+    // };
+
     const handleSignup = async () => {
         const userNamebox = document.getElementById("username");
         const passwordBox = document.getElementById("password");
         const emailBox = document.getElementById("email");
         try{
-            const user = await Auth.signUp(userNamebox.value, passwordBox.value, emailBox.value)  
+            const user = await Auth.signUp(userNamebox.value, passwordBox.value, emailBox.value);
+            // createUserInDynamo();
             console.log(user);
         }catch(error){
             alert(error);

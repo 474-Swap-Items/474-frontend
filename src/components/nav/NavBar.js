@@ -20,13 +20,17 @@ export default function NavBar() {
        }
     };
 
+    const goToLogin = () => {
+        history.push("/login");
+    }
+
     return(
         <nav>
             <ul className="nav-bar">
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/users">Users</Link></li>
                 <li><Link to="/posts">Posts</Link></li>
-                { auth || user ? <button onClick={logout}>Logout</button> : null}
+                { auth || user ? <button onClick={logout}>Log out</button> : <button onClick={goToLogin}>Log in</button>}
             </ul>
         </nav>
     )
