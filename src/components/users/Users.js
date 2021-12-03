@@ -40,7 +40,7 @@ export default function Users() {
                                 <h2>{item?.name}</h2>
                                 <h4>{item?.username}</h4>
                             </div>
-                            <img src={item?.img_url} />
+                            <img src={item?.img_url} width={"25%"} />
                         </CardContent>
                     </Card>
                 })}

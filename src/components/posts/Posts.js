@@ -55,6 +55,9 @@ export default function Posts() {
                                     <h2>
                                         {item?.my_type}
                                     </h2>
+                                    <h5>
+                                        {item?.description}
+                                    </h5>
                                     <h3>
                                         ${item?.price}
                                     </h3>
