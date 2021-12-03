@@ -21,7 +21,6 @@ export default function Signup() {
     const { setAuth } = useAuthContext();
 
     const createUserInDynamo = async () => {
-        console.log("help");
         let valuesStatus = true;
         const fields = [];
         fields.push(document.getElementById("username").value);
@@ -37,7 +36,6 @@ export default function Signup() {
         }else{
             makeAndSend(fields);
         }
-        goToLogin();
     };
 
     const makeAndSend = (values) => {
