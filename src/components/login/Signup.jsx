@@ -25,7 +25,6 @@ export default function Signup() {
         let valuesStatus = true;
         const fields = [];
         fields.push(document.getElementById("username").value);
-        fields.push(document.getElementById("password").value);
         fields.push(document.getElementById("email").value);
         fields.push(document.getElementById("img_url").value);
         fields.map((field) =>{
@@ -42,7 +41,7 @@ export default function Signup() {
     };
 
     const makeAndSend = (values) => {
-        let obj = {name: values[0], username: values[1], email: values[2], img_url: values[3], id:uuidv4()}
+        let obj = { id:uuidv4(), username: values[0], email: values[1], img_url: values[3]}
         axios.post('https://y1nkeqjzma.execute-api.us-east-1.amazonaws.com/prod', obj)
             .then((res) => {console.log("Created user: " + res)})
             .catch((err) =>{console.log(err)})

@@ -21,15 +21,15 @@ def lambda_handler(event, context):
         Item={
             "id": event['id'],
             "title": event['title'],
+            "description": event['description'],
             "price": event['price'],
-            "myEmail": event['myEmail'],
-            "myType": event['myType'],
-            "img-url": event['img_url'],
-            "description": event['description']
-            # "email": event['email']
+            "my_type": event['my_type'],
+            "img_url": event['img_url'],
+            "owner_username": event["username"],
+            "email": event['email'],
             })
 # return a properly formatted JSON object
     return {
         'statusCode': 200,
-        'body': json.dumps(event['title'] + " " + str(event['price']) + " " + str(event['id']) + " " + str(event['myType']) + " " + str(event['owner']), str(event["img_url"], str(event["description"]))
+        'body': json.dumps(str(event['id']) + " " + str(event['title']) + " "  + str(event["description"]) + " " + str(event['price']) + " " + str(event['my_type']) + " " + str(event["img_url"]) + " " + str(event['owner_username']), " " + str(event['email']))
     }

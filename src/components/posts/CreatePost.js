@@ -51,7 +51,7 @@ export default function CreatePost(props) {
   }
 
   const makeAndSend = (values) =>{
-    let obj = {title: values[0], description:values[1], price:values[2], type:values[3], img_url:values[4], id: uuidv4(), myEmail:user?.attributes?.email}
+    let obj = {id: uuidv4(), title: values[0], description:values[1], price:values[2], my_type:values[3], img_url:values[4], email:user?.attributes?.email}
     axios.post('https://v1sdueurx1.execute-api.us-east-1.amazonaws.com/initial/', obj)
     .then((res) => {console.log(res)})
     .catch((err) => {console.log(err)})
