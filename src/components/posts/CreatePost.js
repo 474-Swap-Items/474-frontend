@@ -78,6 +78,15 @@ export default function CreatePost(props) {
             variant="standard"
           />
           <TextField
+            autoFocus
+            margin="dense"
+            id="description"
+            label="Description"
+            type="description"
+            fullWidth
+            variant="standard"
+          />
+          <TextField
             margin="dense"
             id="price"
             label="Price"

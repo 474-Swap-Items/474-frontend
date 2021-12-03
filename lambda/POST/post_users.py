@@ -26,5 +26,7 @@ def lambda_handler(event, context):
 # return a properly formatted JSON object
     return {
         'statusCode': 200,
-        'body': json.dumps('Hello from Lambda, ' + str(event["id"]) + " " + str(event["username"]) + " " + str(event["email"]) + " " + str(event["img_url"]))
+        'body': json.dumps('Hello from Lambda, ' + 
+            str(event["id"]) + " " + str(event["username"]) + " " + 
+            str(event["email"]) + " " + str(event["img_url"]))
     }
