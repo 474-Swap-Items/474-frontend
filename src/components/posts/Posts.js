@@ -20,7 +20,7 @@ export default function Posts() {
     },[callback]);
     
     const getPosts = () => {
-        axios.get('https://gyi1j13oti.execute-api.us-east-1.amazonaws.com/sfu-swap-prod') 
+        axios.get('https://yy9aecrqoe.execute-api.us-east-1.amazonaws.com/submission') 
         .then(res => {
             setPostList(res.data);
             console.log(res.data);
@@ -61,7 +61,7 @@ export default function Posts() {
                                     <h4>
                                         Posted by: {item?.email}
                                     </h4>
-                                    <img src={item?.img_url} />
+                                    <img src={item?.img_url} width={"25%"}/>
                                 </div>
                             </Typography>
                         </CardContent>
