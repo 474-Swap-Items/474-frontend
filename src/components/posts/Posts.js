@@ -48,19 +48,20 @@ export default function Posts() {
                     <Card key={i}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
-                                {item.title}
+                                {item?.title}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
                                 <div>
                                     <h2>
-                                        {item.type}
+                                        {item?.type}
                                     </h2>
                                     <h3>
-                                        ${item.price}
+                                        ${item?.price}
                                     </h3>
                                     <h4>
-                                        Posted by: {item.owner}
+                                        Posted by: {item?.owner}
                                     </h4>
+                                    <img src={item?.img_url} />
                                 </div>
                             </Typography>
                         </CardContent>

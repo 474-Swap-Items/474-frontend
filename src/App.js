@@ -21,7 +21,6 @@ function App() {
               <Route exact path='/' component={Homepage} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/signup' component={Signup} />
-              
               <ProtectedRoutes 
                 exact
                 path='/users' 

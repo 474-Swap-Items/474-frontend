@@ -37,9 +37,10 @@ export default function Users() {
                     return <Card key={i}>
                         <CardContent>
                             <div>
-                                <h2>{item.name}</h2>
-                                <h4>{item.username}</h4>
+                                <h2>{item?.name}</h2>
+                                <h4>{item?.username}</h4>
                             </div>
+                            <img src={item?.img_url} />
                         </CardContent>
                     </Card>
                 })}

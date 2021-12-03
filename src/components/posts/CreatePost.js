@@ -29,6 +29,7 @@ export default function CreatePost(props) {
     fields.push(document.getElementById("title").value);
     fields.push(document.getElementById("price").value);
     fields.push(document.getElementById("type").value);
+    fields.push(document.getElementById("image_url").value);
     fields.map((field) =>{
       if(field === ""){
         valuesStatus = false;
@@ -49,7 +50,7 @@ export default function CreatePost(props) {
   }
 
   const makeAndSend = (values) =>{
-    let obj = {title: values[0],price: values[1], type: values[2],id: uuidv4(), owner:user?.attributes?.email}
+    let obj = {title: values[0], price:values[1], type:values[2], img_url:values[3], id: uuidv4(), owner:user?.attributes?.email}
     axios.post('https://v1sdueurx1.execute-api.us-east-1.amazonaws.com/initial/', obj)
     .then((res) => {console.log(res)})
     .catch((err) => {console.log(err)})
@@ -87,6 +88,14 @@ export default function CreatePost(props) {
             margin="dense"
             id="type"
             label="Type"
+            type="type"
+            fullWidth
+            variant="standard"
+          />
+          <TextField
+            margin="dense"
+            id="image_url"
+            label="Image URL"
             type="image_url"
             fullWidth
             variant="standard"
