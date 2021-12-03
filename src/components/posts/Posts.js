@@ -64,7 +64,7 @@ export default function Posts() {
                                     <h4>
                                         Posted by: {item?.email}
                                     </h4>
-                                    <img src={item?.img_url} width={"25%"}/>
+                                    <img src={item?.img_url} width={"25%"} />
                                 </div>
                             </Typography>
                         </CardContent>
