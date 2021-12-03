@@ -43,17 +43,19 @@ export default function CreatePost(props) {
       if(pattern.test(fields[2])){
         makeAndSend(fields);
         setOpen(false);
-        props.rerenderParentCallback();
       }else{
         alert("Price must be a number")
       }
     }}
   }
-
+  
   const makeAndSend = (values) =>{
     let obj = {id: uuidv4(), title: values[0], description:values[1], price:values[2], my_type:values[3], img_url:values[4], email:user?.attributes?.email, username:user?.username}
     axios.post('https://q9nbo4wqqd.execute-api.us-east-1.amazonaws.com/production', obj)
-    .then((res) => {console.log(res)})
+    .then((res) => {
+      console.log(res);
+      props.rerenderParentCallback();
+    })
     .catch((err) => {console.log(err)})
   }
 

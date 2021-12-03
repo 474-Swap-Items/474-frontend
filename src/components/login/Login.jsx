@@ -32,6 +32,7 @@ export default function Login() {
             alert(error)
             console.log("Login failed:" + error);
         }
+        
     };
 
     const goToSignUp = async () => {
