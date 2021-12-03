@@ -78,7 +78,6 @@ export default function CreatePost(props) {
             variant="standard"
           />
           <TextField
-            autoFocus
             margin="dense"
             id="description"
             label="Description"
