@@ -40,8 +40,8 @@ export default function Signup() {
 
     const makeAndSend = (values) => {
         let obj = { id:uuidv4(), username: values[0], email: values[1], img_url: values[2]}
-        axios.post('https://1as88cndmc.execute-api.us-east-1.amazonaws.com/sfu-swap-prod', obj)
-            .then((res) => {console.log("Created dynamo user: " + res);goToLogin();})
+        axios.post('https://sbzagtupu4.execute-api.us-east-1.amazonaws.com/initial', obj)
+            .then((res) => {console.log("Created user: " + res)})
             .catch((err) =>{console.log(err)})
     }
 

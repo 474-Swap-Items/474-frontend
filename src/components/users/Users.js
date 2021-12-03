@@ -17,7 +17,7 @@ export default function Users() {
     },[]);
     
     const getUsers = () => {
-        axios.get('https://1as88cndmc.execute-api.us-east-1.amazonaws.com/sfu-swap-prod') 
+        axios.get('https://sbzagtupu4.execute-api.us-east-1.amazonaws.com/initial') 
         .then(res => {
             setUserList(res.data);
             console.log(res.data);
