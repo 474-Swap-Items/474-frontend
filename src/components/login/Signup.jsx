@@ -27,6 +27,7 @@ export default function Signup() {
         fields.push(document.getElementById("username").value);
         fields.push(document.getElementById("password").value);
         fields.push(document.getElementById("email").value);
+        fields.push(document.getElementById("img_url").value);
         fields.map((field) =>{
           if(field === ""){
             valuesStatus = false;
@@ -41,9 +42,9 @@ export default function Signup() {
     };
 
     const makeAndSend = (values) => {
-        let obj = {name: values[0], username: values[1], email: values[2], id: uuidv4()}
+        let obj = {name: values[0], username: values[1], email: values[2], img_url: values[3], id:uuidv4()}
         axios.post('https://y1nkeqjzma.execute-api.us-east-1.amazonaws.com/prod', obj)
-            .then((res) => {console.log("Created user in dynamo: " + res)})
+            .then((res) => {console.log("Created user: " + res)})
             .catch((err) =>{console.log(err)})
     }
 
@@ -95,6 +96,14 @@ export default function Signup() {
                     id="password"
                     label="Password"
                     type="password"
+                    fullWidth
+                    variant="standard"
+                />
+                <TextField
+                    margin="dense"
+                    id="img_url"
+                    label="Image URL"
+                    type="img_url"
                     fullWidth
                     variant="standard"
                 />
