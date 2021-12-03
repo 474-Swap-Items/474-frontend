@@ -40,7 +40,7 @@ export default function CreatePost(props) {
         alert("you need to fill in all of the fields");
     }else{
       const pattern = /\d/g;
-      if(pattern.test(fields[1])){
+      if(pattern.test(fields[2])){
         makeAndSend(fields);
         setOpen(false);
         props.rerenderParentCallback();
@@ -51,7 +51,7 @@ export default function CreatePost(props) {
   }
 
   const makeAndSend = (values) =>{
-    let obj = {id: uuidv4(), title: values[0], description:values[1], price:values[2], my_type:values[3], img_url:values[4], email:user?.attributes?.email}
+    let obj = {id: uuidv4(), title: values[0], description:values[1], price:values[2], my_type:values[3], img_url:values[4], email:user?.attributes?.email, username:user?.username}
     axios.post('https://v1sdueurx1.execute-api.us-east-1.amazonaws.com/initial/', obj)
     .then((res) => {console.log(res)})
     .catch((err) => {console.log(err)})
