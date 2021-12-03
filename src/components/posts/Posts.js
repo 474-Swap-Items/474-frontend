@@ -55,13 +55,16 @@ export default function Posts() {
                                     <h2>
                                         {item?.my_type}
                                     </h2>
+                                    <h5>
+                                        {item?.description}
+                                    </h5>
                                     <h3>
                                         ${item?.price}
                                     </h3>
                                     <h4>
                                         Posted by: {item?.email}
                                     </h4>
-                                    <img src={item?.img_url} />
+                                    <img src={item?.img_url} width={"25%"}/>
                                 </div>
                             </Typography>
                         </CardContent>
