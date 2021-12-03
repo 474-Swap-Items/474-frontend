@@ -42,7 +42,8 @@ export default function Signup() {
 
     const makeAndSend = (values) => {
         let obj = { id:uuidv4(), username: values[0], email: values[1], img_url: values[3]}
-        axios.post('https://y1nkeqjzma.execute-api.us-east-1.amazonaws.com/prod', obj)
+        axios.post('https://63pqdmx904.execute-api.us-east-1.amazonaws.com/production
+', obj)
             .then((res) => {console.log("Created user: " + res)})
             .catch((err) =>{console.log(err)})
     }
