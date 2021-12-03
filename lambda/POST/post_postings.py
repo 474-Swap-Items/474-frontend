@@ -34,5 +34,5 @@ def lambda_handler(event, context):
         'body': json.dumps('Hello from Lambda, ' +
             str(event['id']) + " " + str(event['title']) + " "  + str(event["description"]) + " " + 
             str(event['price']) + " " + str(event['my_type']) + " " + str(event["img_url"]) + " " + 
-            str(event['owner_username']), " " + str(event['email']))
+            str(event['username']) + " " + str(event['email']))
     }
