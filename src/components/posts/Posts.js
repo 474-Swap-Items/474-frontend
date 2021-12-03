@@ -20,7 +20,7 @@ export default function Posts() {
     },[callback]);
     
     const getPosts = () => {
-        axios.get('https://v1sdueurx1.execute-api.us-east-1.amazonaws.com/initial/') 
+        axios.get('https://gyi1j13oti.execute-api.us-east-1.amazonaws.com/sfu-swap-prod') 
         .then(res => {
             setPostList(res.data);
             console.log(res.data);
@@ -53,13 +53,13 @@ export default function Posts() {
                             <Typography variant="body2" color="text.secondary">
                                 <div>
                                     <h2>
-                                        {item?.type}
+                                        {item?.my_type}
                                     </h2>
                                     <h3>
                                         ${item?.price}
                                     </h3>
                                     <h4>
-                                        Posted by: {item?.owner}
+                                        Posted by: {item?.email}
                                     </h4>
                                     <img src={item?.img_url} />
                                 </div>
